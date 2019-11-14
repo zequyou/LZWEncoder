@@ -5,10 +5,11 @@
 #include <unordered_map>
 #include <cstdint>
 #include <string>
+#include <cassert>
 
 using namespace std;
 
-bool lzw_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, uint32_t &output_length) {
+uint32_t lzw_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, uint32_t &output_length) {
     unordered_map<string, uint16_t> dictionary(8192);
     uint32_t output_index = 0;
     uint16_t dict_index = 256;
@@ -45,7 +46,8 @@ bool lzw_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, ui
         }
 
         if (dict_index == 4096) {
-            return false;
+            assert(output_index <= 5760);
+            return 0;
         }
     }
 
@@ -61,5 +63,6 @@ bool lzw_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, ui
     }
     output_length = output_index;
 
-    return true;
+    assert(output_index <= 5760);
+    return 1;
 }

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-bool lzw_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, uint32_t &output_length);
-bool lzw_tree_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, uint32_t &output_length);
+uint32_t lzw_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, uint32_t &output_length);
+uint32_t lzw_tree_encode(const uint8_t *input, uint8_t *output, uint32_t input_length, uint32_t &output_length);
 
 #endif //LZW_ENCODER_H

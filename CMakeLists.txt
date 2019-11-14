@@ -4,4 +4,4 @@ project(LZWEncoder)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "-O3")
 
-add_executable(LZWEncoder main.cpp)
+add_executable(LZWEncoder main.cpp lzw_tree_encoder.cpp lzw_common_encoder.cpp)

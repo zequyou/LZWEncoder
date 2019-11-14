@@ -4,6 +4,7 @@
 
 #include <unordered_map>
 #include <cstdint>
+#include <cassert>
 
 using namespace std;
 
@@ -62,6 +63,7 @@ bool lzw_tree_encode(const uint8_t *input, uint8_t *output, uint32_t input_lengt
         }
 
         if (dict_index == 4096) {
+            assert(output_index <= 5760);
             return false;
         }
     }
@@ -77,5 +79,6 @@ bool lzw_tree_encode(const uint8_t *input, uint8_t *output, uint32_t input_lengt
     }
     output_length = output_index;
 
+    assert(output_index <= 5760);
     return true;
 }
